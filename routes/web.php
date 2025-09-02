@@ -1,10 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test', function () {
-    return view('test');
-});
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/employees', function () {
+    return "All Employees Page";
+})->name('employees');
+
+Route::get('/attendance', function () {
+    return "Attendance Page";
+})->name('attendance');
+
+Route::get('/salary', function () {
+    return "Salary Page";
+})->name('salary');
+
