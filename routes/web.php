@@ -8,7 +8,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 // Employee Routes
-Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
 Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
 
