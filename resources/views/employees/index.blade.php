@@ -32,7 +32,7 @@
                 <td class="py-2 px-4 border-b">{{ $employee->last_name }}</td>
                 <td class="py-2 px-4 border-b">
                     @if($employee->profile_photo)
-                        <img src="{{ asset('employees/' . $employee->profile_photo) }}" width="50">
+                        <img src="{{ asset('employees/' . $employee->profile_photo) }}" width="50" class="rounded">
                     @else
                         N/A
                     @endif
