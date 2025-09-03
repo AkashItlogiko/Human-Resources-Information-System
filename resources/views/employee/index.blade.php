@@ -8,7 +8,7 @@
 
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold">All Employees</h1>
-        <a href="{{ route('employees.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Create Employee</a>
+        <a href="{{ route('employee.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Create Employee</a>
     </div>
 
     @if(session('success'))

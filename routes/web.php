@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 // Employee Routes
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
-Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
 
 // Attendance
