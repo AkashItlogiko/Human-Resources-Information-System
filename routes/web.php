@@ -11,6 +11,11 @@ Route::get('/', function () {
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
+// Edit + Update
+Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employee.update');
+// Delete
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 // Attendance
 Route::get('/attendance', function () {

@@ -12,11 +12,11 @@
         @csrf
         <div>
             <label class="block mb-1">First Name</label>
-            <input type="text" name="first_name" class="border p-2 w-full">
+            <input type="text" name="first_name" class="border p-2 w-full" required>
         </div>
         <div>
             <label class="block mb-1">Last Name</label>
-            <input type="text" name="last_name" class="border p-2 w-full">
+            <input type="text" name="last_name" class="border p-2 w-full" required>
         </div>
         <div>
             <label class="block mb-1">Photo</label>
