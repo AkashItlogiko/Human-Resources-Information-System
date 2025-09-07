@@ -37,7 +37,7 @@ class EmployeeController extends Controller
                          ->with('success', 'Employee created successfully');
     }
 
-    // ------------------ Edit Function ------------------
+    //Edit Function
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
