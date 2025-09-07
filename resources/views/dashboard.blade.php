@@ -5,18 +5,30 @@
     <title>Dashboard - HR System</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gray-100 min-h-screen flex">
 
-    <!-- Header -->
-   <header class="bg-yellow-400 shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-extrabold text-yellow-900">HR Dashboard</h1>
-    </div>
-    </header>
+    <!-- Sidebar -->
+    <aside class="w-64 bg-yellow-400 text-yellow-900 min-h-screen shadow-lg">
+        <div class="p-6">
+            <h1 class="text-2xl font-bold mb-6">HRIS</h1>
+            <nav class="space-y-4">
+                <a href="{{ route('employee.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+                    All Employee
+                </a>
+                <a href="{{ route('attendance') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+                    Attendance
+                </a>
+                <a href="{{ route('salary') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+                    Salary
+                </a>
+            </nav>
+        </div>
+    </aside>
 
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+        <h2 class="text-3xl font-bold mb-6">Welcome to HR Dashboard</h2>
 
-    <!-- Main Dashboard -->
-    <main class="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
             <!-- All Employee Card -->
