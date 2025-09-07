@@ -22,7 +22,7 @@
             <tr>
                 <th class="py-2 px-4 border-b">First Name</th>
                 <th class="py-2 px-4 border-b">Last Name</th>
-                <th class="py-2 px-4 border-b">Photo</th>
+                <th class="py-2 px-4 border-b">Photos</th>
             </tr>
         </thead>
         <tbody>
