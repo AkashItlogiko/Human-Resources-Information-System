@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AttendanceController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -18,9 +19,16 @@ Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('empl
 Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 // Attendance
-Route::get('/attendance', function () {
-    return "Attendance Page";
-})->name('attendance');
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');
+Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+Route::get('/attendance/history', [AttendanceController::class, 'history'])->name('attendance.history');
+// Edit + Update
+Route::get('/attendance/{id}/edit', [AttendanceController::class, 'edit'])->name('attendance.edit');
+Route::put('/attendance/{id}', [AttendanceController::class, 'update'])->name('attendance.update');
+// Delete
+Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
+
+
 
 // Salary
 Route::get('/salary', function () {
