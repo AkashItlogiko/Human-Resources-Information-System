@@ -18,9 +18,9 @@
                 <a href="{{ route('attendance') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Attendance
                 </a>
-                <a href="{{ route('promotion') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+               <a href="{{ route('promotions.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Promotion
-                </a>
+               </a>
                 <a href="{{ route('salary') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Salary
                 </a>

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Attendance History</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="p-6 bg-gray-100">
+{{-- resources/views/attendance/history.blade.php --}}
+@extends('layouts.app') {{-- layouts.app --}}
+
+@section('content') {{-- layouts.app er content section start --}}
+<div class="p-6 bg-gray-100">
 
     <h1 class="text-2xl font-bold mb-4">Attendance History</h1>
 
@@ -72,5 +70,5 @@
     <a href="{{ route('attendance') }}"
        class="mt-6 inline-block bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded">Back to Attendance</a>
 
-</body>
-</html>
+</div>
+@endsection {{-- content section end --}}

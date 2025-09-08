@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>All Employees</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-6">
+{{-- resources/views/employee/index.blade.php --}}
+@extends('layouts.app') {{-- layouts.app extend--}}
+
+@section('content') {{-- layouts.app er content section start --}}
+<div class="bg-gray-100 p-6">
 
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold">All Employees</h1>
@@ -60,5 +58,5 @@
         </table>
     </div>
 
-</body>
-</html>
+</div>
+@endsection {{-- content section end --}}

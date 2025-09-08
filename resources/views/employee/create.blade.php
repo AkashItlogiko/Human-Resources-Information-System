@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Employee</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-6">
+{{-- resources/views/employee/create.blade.php --}}
+@extends('layouts.app') {{-- layouts.app extend --}}
+
+@section('content') {{-- layouts.app er content section start --}}
+<div class="bg-gray-100 p-6">
 
     <h1 class="text-3xl font-bold mb-4">Create Employee</h1>
 
@@ -25,5 +23,5 @@
         <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Save Employee</button>
     </form>
 
-</body>
-</html>
+</div>
+@endsection {{-- content section end --}}

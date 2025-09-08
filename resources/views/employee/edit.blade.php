@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Edit Employee</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-6">
+{{-- resources/views/employee/edit.blade.php --}}
+@extends('layouts.app') {{-- layouts.app extend--}}
+
+@section('content') {{-- layouts.app er content section start --}}
+<div class="bg-gray-100 p-6">
 
     <div class="max-w-lg mx-auto bg-white p-6 rounded shadow">
         <h1 class="text-2xl font-bold mb-4">Edit Employee</h1>
@@ -35,5 +33,5 @@
         </form>
     </div>
 
-</body>
-</html>
+</div>
+@endsection {{-- content section end --}}

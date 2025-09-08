@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
 
 Route::get('/', function () {
@@ -29,9 +30,11 @@ Route::put('/attendance/{id}', [AttendanceController::class, 'update'])->name('a
 Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
 // Promotion
-Route::get('/promotion', function () {
-    return "Promotion Page";
-})->name('promotion');
+    Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
+    Route::get('promotions/{employee}/create', [PromotionController::class, 'create'])->name('promotions.create');
+    Route::post('promotions/{employee}', [PromotionController::class, 'store'])->name('promotions.store');
+    Route::get('promotions/{employee}/history', [PromotionController::class, 'history'])->name('promotions.history');
+
 
 // Salary
 Route::get('/salary', function () {

@@ -13,4 +13,10 @@ class Employee extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+     public function promotions()
+    {
+        return $this->hasMany(Promotion::class);
+    }
+
+
 }
