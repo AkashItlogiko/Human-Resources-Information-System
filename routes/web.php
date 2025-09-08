@@ -28,7 +28,10 @@ Route::put('/attendance/{id}', [AttendanceController::class, 'update'])->name('a
 // Delete
 Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
-
+// Promotion
+Route::get('/promotion', function () {
+    return "Promotion Page";
+})->name('promotion');
 
 // Salary
 Route::get('/salary', function () {
