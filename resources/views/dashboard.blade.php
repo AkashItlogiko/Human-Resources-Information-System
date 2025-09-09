@@ -21,7 +21,7 @@
                <a href="{{ route('promotions.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Promotion
                </a>
-                <a href="{{ route('salary') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+                <a href="{{ route('salaries.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Salary
                 </a>
             </nav>
@@ -47,7 +47,7 @@
             </a>
 
             <!-- Salary Card -->
-            <a href="{{ route('salary') }}" class="bg-yellow-500 hover:bg-yellow-600 text-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center transition duration-300">
+            <a href="{{ route('salaries.index') }}" class="bg-yellow-500 hover:bg-yellow-600 text-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center transition duration-300">
                 <span class="text-2xl font-semibold mb-2">Salary</span>
                 <span class="text-sm">Manage salaries</span>
             </a>

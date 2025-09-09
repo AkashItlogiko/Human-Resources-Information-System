@@ -25,12 +25,12 @@
 
         <div class="mb-3">
             <label>Calculated Increment (৳)</label>
-            <div id="increment_amount_display" class="p-2 bg-gray-50 rounded">৳ 0.00</div>
+            <div id="increment_amount_display" class="p-2 bg-gray-50 rounded">$0.00</div>
         </div>
 
         <div class="mb-3">
             <label>New Salary</label>
-            <div id="new_salary_display" class="p-2 bg-gray-50 rounded">৳ {{ number_format($employee->salary,2) }}</div>
+            <div id="new_salary_display" class="p-2 bg-gray-50 rounded">${{ number_format($employee->salary,2) }}</div>
         </div>
 
         <div class="mb-3">

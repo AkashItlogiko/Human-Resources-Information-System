@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
@@ -37,6 +38,12 @@ Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy'])->nam
 
 
 // Salary
-Route::get('/salary', function () {
-    return "Salary Page";
-})->name('salary');
+Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
+Route::get('salaries/{employee}/create', [SalaryController::class, 'create'])->name('salaries.create');
+Route::post('salaries/{employee}', [SalaryController::class, 'store'])->name('salaries.store');
+Route::get('salaries/{employee}/edit', [SalaryController::class, 'edit'])->name('salaries.edit');
+Route::put('salaries/{employee}', [SalaryController::class, 'update'])->name('salaries.update');
+Route::delete('salaries/{employee}', [SalaryController::class, 'destroy'])->name('salaries.destroy');
+Route::get('salaries/{employee}/history', [SalaryController::class, 'history'])->name('salaries.history');
+Route::delete('salary-histories/{history}', [SalaryController::class, 'destroyHistory'])->name('salary-histories.destroy');
+
