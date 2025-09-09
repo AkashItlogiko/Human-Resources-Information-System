@@ -22,7 +22,7 @@
             <tr class="border-t">
                 <td class="p-3">{{ $i+1 }}</td>
                 <td class="p-3">{{ $emp->first_name }} {{ $emp->last_name }}</td>
-                <td class="p-3">৳ {{ number_format($emp->salary,2) }}</td>
+                <td class="p-3">${{ number_format($emp->salary,2) }}</td>
                 <td class="p-3">
                     <a href="{{ route('promotions.create', $emp) }}" class="px-3 py-1 bg-blue-600 text-white rounded mr-2">Give Promotion</a>
                     <a href="{{ route('promotions.history', $emp) }}" class="px-3 py-1 bg-gray-600 text-white rounded">History</a>
