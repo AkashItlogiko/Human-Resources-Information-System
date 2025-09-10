@@ -21,13 +21,41 @@
                 <input type="text" name="last_name" value="{{ $employee->last_name }}" class="w-full border px-3 py-2 rounded">
             </div>
 
-            <div class="mb-4">
-                <label class="block mb-1">Profile Photo</label>
-                <input type="file" name="profile_photo" class="w-full border px-3 py-2 rounded">
-                @if($employee->profile_photo)
-                    <img src="{{ asset('employees/' . $employee->profile_photo) }}" class="w-24 h-24 mt-2 object-cover rounded-full">
-                @endif
-            </div>
+    <div class="mb-4">
+    <label class="block mb-1">Profile Photo</label>
+    <input type="file" name="profile_photo" id="profile_photo"
+           class="w-full border px-3 py-2 rounded"
+           onchange="previewProfilePhoto(event)">
+
+    {{-- Old Photo --}}
+    @if($employee->profile_photo)
+        <img id="oldPhoto" src="{{ asset('employees/' . $employee->profile_photo) }}"
+             class="w-24 h-24 mt-2 object-cover rounded-full">
+    @endif
+
+    {{-- New Preview (hidden by default) --}}
+    <img id="preview" class="w-24 h-24 mt-2 object-cover rounded-full hidden">
+</div>
+
+                <script>
+                    function previewProfilePhoto(event) {
+                        var reader = new FileReader();
+                        reader.onload = function(){
+                            var preview = document.getElementById('preview');
+                            var oldPhoto = document.getElementById('oldPhoto');
+
+                            preview.src = reader.result;
+                            preview.classList.remove('hidden');
+
+                            // If a previous photo exists, it will be hidden.
+                            if(oldPhoto){
+                                oldPhoto.style.display = 'none';
+                            }
+                        };
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
+
 
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Update</button>
         </form>
