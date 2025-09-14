@@ -17,11 +17,33 @@
             <input type="text" name="last_name" class="border p-2 w-full" required>
         </div>
         <div>
-            <label class="block mb-1">Photo</label>
-            <input type="file" name="profile_photo" class="border p-2 w-full">
+            <label class="block mb-1">Profile Photo</label>
+            <input type="file" name="profile_photo" class="border p-2 w-full"
+                   onchange="previewImage(event)">
         </div>
+
+        {{-- Preview Image --}}
+        <div>
+            <img id="preview" src="#" alt="Image Preview"
+                class="w-24 h-24 mt-2 object-cover rounded-full"
+                 style="max-width: 200px; display:none;">
+        </div>
+
         <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Save Employee</button>
     </form>
 
 </div>
+
+{{-- JavaScript for Image Preview --}}
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block'; // show image when selected
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection {{-- content section end --}}
