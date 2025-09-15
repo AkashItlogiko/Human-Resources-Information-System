@@ -18,18 +18,29 @@ class AttendanceController extends Controller
     // Store Attendance
     public function store(Request $request)
     {
-        foreach ($request->employee_id as $key => $employee_id) {
+         $date = $request->date;
+
+    foreach ($request->employee_id as $key => $employeeId) {
+        $status = $request->status[$key];
+
+        // Check duplicate (same employee + same date)
+        $exists = Attendance::where('employee_id', $employeeId)
+                            ->whereDate('date', $date)
+                            ->exists();
+
+        if (!$exists) {
             Attendance::create([
-                'employee_id' => $employee_id,
-                'date' => $request->date,
-                'status' => $request->status[$key],
+                'employee_id' => $employeeId,
+                'date' => $date,
+                'status' => $status,
             ]);
         }
+    }
 
         return redirect()->back()->with('success', 'Attendance submitted successfully!');
     }
 
-    // Edit Form  
+    // Edit Form
 public function edit($id)
 {
     $attendance = Attendance::findOrFail($id);
