@@ -15,9 +15,13 @@
     <form action="{{ route('attendance.store') }}" method="POST">
         @csrf
 
-        <label class="font-bold mb-2 block">Date</label>
-        <input type="date" name="date" required class="border p-2 mb-4 rounded">
-
+    <label class="font-bold mb-2 block">Date</label>
+    <input type="date"
+           name="date"
+           required
+           class="border p-2 mb-4 rounded"
+           value="{{date('Y-m-d')}}"
+           max="{{date('Y-m-d')}}">
         <!-- Responsive Wrapper -->
         <div class="overflow-x-auto">
             <table class="w-full bg-white rounded shadow border-collapse hidden md:table">
