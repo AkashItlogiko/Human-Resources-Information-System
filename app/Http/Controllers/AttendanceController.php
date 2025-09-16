@@ -52,15 +52,15 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $attendance = Attendance::findOrFail($id);
-
+ 
     $attendance->update([
-        'employee_id' => $request->employee_id,
-        'date' => $request->date,
         'status' => $request->status,
     ]);
 
-    return redirect()->route('attendance.history')->with('success', 'Attendance updated successfully!');
+    return redirect()->route('attendance.history')
+                     ->with('success', 'Attendance status updated successfully!');
 }
+
 
 // Delete Attendance
 public function destroy($id)
