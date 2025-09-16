@@ -11,10 +11,10 @@
     <aside class="w-64 bg-yellow-400 text-yellow-900 min-h-screen shadow-lg fixed">
         <div class="p-6">
             <h1 class="text-2xl font-bold mb-6">
-    <a href="{{ route('dashboard') }}" class="hover:text-white transition">
-        HRIS
-    </a>
-</h1>
+                <a href="{{ route('dashboard') }}" class="hover:text-white transition">
+                    HRIS
+                </a>
+            </h1>
 
             <nav class="space-y-4">
                 <a href="{{ route('employee.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
@@ -29,6 +29,12 @@
                 <a href="{{ route('salaries.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     Salary
                 </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="block px-4 py-2 font-bold rounded-lg hover:bg-red-500 hover:text-white transition w-full text-left">
+                        Logout
+                    </button>
+                </form>
             </nav>
         </div>
     </aside>
