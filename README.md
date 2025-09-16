@@ -10,8 +10,6 @@ make ajax request when posting to employee store.
 
 add authentication to guard all routes.
 
-update only status when editing attendance.
-
 allow effective date to be in future not in past for promotion.
 
 filter monthly or weekly in attendance history.
