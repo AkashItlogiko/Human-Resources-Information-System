@@ -52,7 +52,7 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $attendance = Attendance::findOrFail($id);
- 
+
     $attendance->update([
         'status' => $request->status,
     ]);
@@ -73,19 +73,33 @@ public function destroy($id)
 
     // Attendance History with filter
     public function history(Request $request)
-    {
-        $employees = Employee::all();
-        $query = Attendance::with('employee');
+{
+    // Fetch all employees for the dropdown
+    $employees = Employee::orderBy('first_name')->get();
 
-        if ($request->employee_id) {
-            $query->where('employee_id', $request->employee_id);
-        }
-        if ($request->date) {
-            $query->whereDate('date', $request->date);
-        }
+    // Start attendance query with employee relation
+    $query = Attendance::with('employee');
 
-        $attendances = $query->get();
-
-        return view('attendance.history', compact('employees', 'attendances'));
+    // Filter by employee if selected
+    if ($request->employee_id) {
+        $query->where('employee_id', $request->employee_id);
     }
+
+    // Filter by month if selected
+    if ($request->month) {
+        $query->whereMonth('date', $request->month);
+    }
+
+    // Filter by year if selected
+    if ($request->year) {
+        $query->whereYear('date', $request->year);
+    }
+
+    // Get filtered attendance records
+    $attendances = $query->get();
+
+    // Pass employees and attendances to the view
+    return view('attendance.history', compact('employees', 'attendances'));
+}
+
 }

@@ -12,8 +12,6 @@ add authentication to guard all routes.
 
 allow effective date to be in future not in past for promotion.
 
-filter monthly or weekly in attendance history.
-
 promote employee with designation.
 
 show salary disbursement history.
