@@ -21,6 +21,12 @@
         </div>
 
         <div>
+            <label class="block mb-1">Designation</label>
+            <input type="text" name="designation" class="border p-2 w-full" value="{{ old('designation') }}">
+        </div>
+
+
+        <div>
             <label class="block mb-1">Email</label>
             <input type="email" name="email" value="{{ old('email') }}" class="border p-2 w-full">
             @error('email') <span class="text-red-600">{{ $message }}</span> @enderror

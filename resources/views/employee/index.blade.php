@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th class="py-3 px-4 border-b">Name</th>
+                    <th class="py-3 px-4 border-b">Designation</th>
                     <th class="py-3 px-4 border-b">Email</th>
                     <th class="py-3 px-4 border-b">Phone</th>
                     <th class="py-3 px-4 border-b">Salary</th>
@@ -34,6 +35,7 @@
                 @forelse($employees as $employee)
                 <tr class="hover:bg-gray-50">
                     <td class="py-2 px-4 border-b">{{ $employee->first_name }} {{ $employee->last_name }}</td>
+                    <td class="py-2 px-4 border-b">{{ $employee->designation ?? 'N/A' }}</td>
                     <td class="py-2 px-4 border-b">{{ $employee->email ?? 'N/A' }}</td>
                     <td class="py-2 px-4 border-b">{{ $employee->phone ?? 'N/A' }}</td>
                     <td class="py-2 px-4 border-b">{{ $employee->salary ? number_format($employee->salary,2) : 'N/A' }}</td>

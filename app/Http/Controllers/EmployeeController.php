@@ -24,6 +24,7 @@ class EmployeeController extends Controller
         $data = $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'designation' => 'required|string',
             'email' => 'required|email|unique:employees,email',
             'salary' => 'required|numeric',
             'phone' => 'required|string',
@@ -70,6 +71,7 @@ class EmployeeController extends Controller
         $data = $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
+            'designation' => 'nullable|string',
             'email' => ['required','email', Rule::unique('employees')->ignore($employee->id)],
             'salary' => 'required|numeric',
             'phone' => 'required|string',

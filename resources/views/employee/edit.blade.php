@@ -21,6 +21,11 @@
                 <input type="text" name="last_name" value="{{ old('last_name', $employee->last_name) }}" class="w-full border px-3 py-2 rounded">
                 @error('last_name') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
+            
+             <div class="mb-4">
+                <label class="block mb-1">Designation</label>
+                <input type="text" name="designation" value="{{ $employee->designation }}" class="w-full border px-3 py-2 rounded">
+            </div>
 
             <div class="mb-4">
                 <label class="block mb-1">Email</label>
