@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Promotion extends Model
 {
     protected $fillable = [
-        'employee_id','old_salary','increment_type','increment_value',
-        'increment_amount','new_salary','effective_date','note','created_by'
+        'employee_id',
+        'old_salary',
+        'increment_type',
+        'increment_value',
+        'increment_amount',
+        'new_salary',
+        'old_designation',
+        'new_designation',
+        'effective_date',
+        'note',
+        'created_by'
     ];
 
     public function employee()
