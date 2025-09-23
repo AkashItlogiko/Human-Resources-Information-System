@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
     <h1 class="text-xl font-bold mb-4">
@@ -17,4 +17,4 @@
         </div>
         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Save</button>
     </form>
-@endsection
+@endsection --}}

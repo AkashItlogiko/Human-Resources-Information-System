@@ -6,7 +6,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\AttendanceController;
 
- 
+
 require __DIR__.'/auth.php';
 
 // Default Redirect → HR Dashboard

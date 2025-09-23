@@ -70,7 +70,7 @@ class SalaryController extends Controller
         return redirect()->route('salaries.index')->with('success','Salary updated.');
     }
 
-    
+
 
     // Employee Salary History
     public function history(Employee $employee)
