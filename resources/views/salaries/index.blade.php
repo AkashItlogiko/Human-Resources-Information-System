@@ -11,10 +11,18 @@
 
 <form action="{{ route('salaries.disburse') }}" method="POST">
     @csrf
-    <div class="mb-4">
-        <label class="font-bold">Disburse Date</label>
-        <input type="date" name="disburse_date" value="{{ date('Y-m-d') }}" max="{{ date('Y-m-d') }}" required class="border p-2 rounded">
-    </div>
+   <div class="mb-4">
+    <label class="font-bold">Disburse Date</label>
+    <input
+        type="date"
+        name="disburse_date"
+        value="{{ date('Y-m-d') }}"
+        min="{{ date('Y-m-d') }}"
+        class="border p-2 rounded"
+        required
+    >
+</div>
+
 
     <table class="min-w-full bg-white rounded shadow">
         <thead>
@@ -41,7 +49,7 @@
         </tbody>
     </table>
 
-    <button type="submit" class="mt-4 px-4 py-2 bg-green-500 text-white rounded">Disburse Selected</button>
+    <button type="submit" class="mt-4 px-4 py-2 bg-green-500 text-white rounded">Disburse Salary</button>
 </form>
 
 <script>
