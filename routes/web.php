@@ -41,7 +41,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Salary
     Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
-    Route::post('salaries/{employee}', [SalaryController::class, 'store'])->name('salaries.store');
-    Route::get('salaries/{employee}/history', [SalaryController::class, 'history'])->name('salaries.history');
+   // Salary
+Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
+Route::post('salaries/disburse', [SalaryController::class, 'disburse'])->name('salaries.disburse');
+Route::get('salaries/{employee}/history', [SalaryController::class, 'history'])->name('salaries.history');
+
 
 });

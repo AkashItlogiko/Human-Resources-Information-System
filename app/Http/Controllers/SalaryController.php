@@ -8,79 +8,44 @@ use Illuminate\Http\Request;
 
 class SalaryController extends Controller
 {
-    // Salary List
+    // Salary List + Disburse Form
     public function index()
     {
-        $employees = Employee::with('promotions')->orderBy('first_name')->get();
+        $employees = Employee::orderBy('first_name')->get();
         return view('salaries.index', compact('employees'));
     }
 
-    // Create Salary (Form)
-    public function create(Employee $employee)
-    {
-        return view('salaries.create', compact('employee'));
-    }
-
-    // Store Salary
-    public function store(Request $request, Employee $employee)
+    // Salary Disburse (bulk or individual)
+    public function disburse(Request $request)
     {
         $request->validate([
-            'amount' => 'required|numeric|min:0',
-            'effective_date' => 'required|date'
+            'employee_ids' => 'required|array',
+            'disburse_date' => 'required|date',
         ]);
 
-        // Employee table  update
-        $employee->salary = $request->amount;
-        $employee->save();
+        $employees = Employee::whereIn('id', $request->employee_ids)->get();
 
-        // History  Insert
-        SalaryHistory::create([
-            'employee_id' => $employee->id,
-            'amount' => $request->amount,
-            'reason' => 'Manual Salary Entry',
-            'effective_date' => $request->effective_date
-        ]);
+        foreach($employees as $employee) {
 
-        return redirect()->route('salaries.index')->with('success','Salary added successfully.');
+
+            
+
+            // Insert salary history
+            SalaryHistory::create([
+                'employee_id' => $employee->id,
+                'amount' => $employee->salary,
+                'reason' => 'Salary Disbursement',
+                'effective_date' => $request->disburse_date,
+            ]);
+        }
+
+        return redirect()->back()->with('success','Salary disbursed successfully.');
     }
-
-    // Edit Salary
-    public function edit(Employee $employee)
-    {
-        return view('salaries.edit', compact('employee'));
-    }
-
-    // Update Salary
-    public function update(Request $request, Employee $employee)
-    {
-        $request->validate([
-            'amount' => 'required|numeric|min:0',
-            'effective_date' => 'required|date'
-        ]);
-
-        $employee->update(['salary' => $request->amount]);
-
-        SalaryHistory::create([
-            'employee_id' => $employee->id,
-            'amount' => $request->amount,
-            'reason' => 'Salary Updated',
-            'effective_date' => $request->effective_date
-        ]);
-
-        return redirect()->route('salaries.index')->with('success','Salary updated.');
-    }
-
-
 
     // Employee Salary History
     public function history(Employee $employee)
     {
-        $histories = SalaryHistory::where('employee_id',$employee->id)
-            ->orderBy('created_at','desc')
-            ->get();
+        $histories = $employee->salaryHistories()->orderBy('effective_date','desc')->get();
         return view('salaries.history', compact('employee','histories'));
     }
-
-
 }
-

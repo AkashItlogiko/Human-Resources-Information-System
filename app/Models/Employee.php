@@ -33,4 +33,9 @@ class Employee extends Model
     {
         return $this->hasMany(Promotion::class);
     }
+
+     public function salaryHistories()
+    {
+        return $this->hasMany(SalaryHistory::class);
+    }
 }
