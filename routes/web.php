@@ -34,17 +34,24 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/attendance/{id}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');
 
     // Promotion
-    Route::get('/promotions', [PromotionController::class, 'index'])->name('promotions.index');
+    Route::get('promotions', [PromotionController::class, 'index'])->name('promotions.index');
     Route::get('promotions/{employee}/create', [PromotionController::class, 'create'])->name('promotions.create');
     Route::post('promotions/{employee}', [PromotionController::class, 'store'])->name('promotions.store');
     Route::get('promotions/{employee}/history', [PromotionController::class, 'history'])->name('promotions.history');
 
+    // keep promotion routes promotions/{employee}
+    // create new routes to do same as promotions routes.
+    Route::prefix('employees/{employee}/promotions')->group(function () {
+    Route::get('/', [PromotionController::class, 'index'])->name('employees.promotions.index');
+    Route::get('/create', [PromotionController::class, 'create'])->name('employees.promotions.create');
+    Route::post('/', [PromotionController::class, 'store'])->name('employees.promotions.store');
+    Route::get('/history', [PromotionController::class, 'history'])->name('employees.promotions.history');
+});
     // Salary
     Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
-   // Salary
-Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
-Route::post('salaries/disburse', [SalaryController::class, 'disburse'])->name('salaries.disburse');
-Route::get('salaries/{employee}/history', [SalaryController::class, 'history'])->name('salaries.history');
+    Route::get('salaries', [SalaryController::class, 'index'])->name('salaries.index');
+    Route::post('salaries/disburse', [SalaryController::class, 'disburse'])->name('salaries.disburse');
+    Route::get('salaries/{employee}/history', [SalaryController::class, 'history'])->name('salaries.history');
 
 
 });

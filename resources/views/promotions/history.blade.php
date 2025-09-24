@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="p-6 max-w-3xl mx-auto">
-    <h2 class="text-xl font-bold mb-4">Promotion History: {{ $employee->first_name }} {{ $employee->last_name }}</h2>
+   <h2 class="text-xl font-bold mb-4">
+    Promotion History: {{ $employee->first_name }} {{ $employee->last_name }}
+</h2>
+
 
     <table class="min-w-full bg-white shadow rounded">
         <thead>

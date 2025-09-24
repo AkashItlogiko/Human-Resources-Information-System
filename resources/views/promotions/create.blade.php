@@ -8,7 +8,7 @@
         <div>Current Designation: <strong>{{ $employee->designation ?? '—' }}</strong></div>
     </div>
 
-    <form action="{{ route('promotions.store', $employee) }}" method="POST" id="promoForm">
+    <form action="{{ route('employees.promotions.store', $employee) }}" method="POST" id="promoForm">
         @csrf
         <input type="hidden" id="old_salary" value="{{ $employee->salary ?? 0 }}">
 

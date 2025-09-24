@@ -7,6 +7,4 @@ keep promotion routes promotions/{employee}
 create new routes to do same tasks as promotions routes.
 
 make ajax request when posting to employee store.
-
-show salary disbursement history.
-disburse salary based on current salary. -->
+ 

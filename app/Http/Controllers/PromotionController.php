@@ -89,7 +89,9 @@ class PromotionController extends Controller
         $employee->save();
     });
 
-    return redirect()->route('promotions.index')->with('success', 'Promotion applied successfully.');
+    return redirect()
+        ->route('promotions.index')->with('success', 'Promotion applied successfully.');
+
 }
 
 
