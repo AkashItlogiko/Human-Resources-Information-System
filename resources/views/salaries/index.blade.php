@@ -33,9 +33,7 @@
                     <td class="py-2 px-4">{{ $employee->first_name }} {{ $employee->last_name }}</td>
                     <td class="py-2 px-4">{{ number_format($employee->salary, 2) }}</td>
                     <td class="py-2 px-4 space-x-2">
-                        <a href="{{ route('salaries.create', $employee->id) }}" class="px-3 py-1 bg-green-500 text-white rounded">Create</a>
-                        <a href="{{ route('salaries.edit', $employee->id) }}" class="px-3 py-1 bg-yellow-500 text-white rounded">Edit</a>
-                        <a href="{{ route('salaries.history', $employee->id) }}" class="px-3 py-1 bg-blue-500 text-white rounded">History</a>
+                    <a href="{{ route('salaries.history', $employee->id) }}" class="px-3 py-1 bg-blue-500 text-white rounded">History</a>
                     </td>
                 </tr>
             @endforeach
