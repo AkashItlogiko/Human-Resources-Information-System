@@ -19,11 +19,14 @@ Route::middleware(['auth'])->group(function () {
 
     // Employee
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index');
-    Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
+    Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
     Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
     Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
     Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employee.update');
     Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+
+    // Private file serve/download route
+    Route::get('/employee/file/{type}/{id}', [EmployeeController::class, 'getFile'])->name('employee.file');
 
     // Attendance
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance');

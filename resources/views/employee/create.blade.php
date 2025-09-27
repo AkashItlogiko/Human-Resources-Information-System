@@ -25,7 +25,6 @@
             <input type="text" name="designation" class="border p-2 w-full" value="{{ old('designation') }}">
         </div>
 
-
         <div>
             <label class="block mb-1">Email</label>
             <input type="email" name="email" value="{{ old('email') }}" class="border p-2 w-full">
@@ -92,13 +91,15 @@
 
 <script>
     function previewImage(event) {
+        var file = event.target.files[0];
+        if (!file) return;
         var reader = new FileReader();
         reader.onload = function(){
             var output = document.getElementById('preview');
             output.src = reader.result;
             output.style.display = 'block';
         };
-        reader.readAsDataURL(event.target.files[0]);
+        reader.readAsDataURL(file);
     }
 </script>
 @endsection

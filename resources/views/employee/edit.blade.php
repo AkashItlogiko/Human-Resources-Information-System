@@ -21,10 +21,10 @@
                 <input type="text" name="last_name" value="{{ old('last_name', $employee->last_name) }}" class="w-full border px-3 py-2 rounded">
                 @error('last_name') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
-            
-             <div class="mb-4">
+
+            <div class="mb-4">
                 <label class="block mb-1">Designation</label>
-                <input type="text" name="designation" value="{{ $employee->designation }}" class="w-full border px-3 py-2 rounded">
+                <input type="text" name="designation" value="{{ old('designation', $employee->designation) }}" class="w-full border px-3 py-2 rounded">
             </div>
 
             <div class="mb-4">
@@ -70,29 +70,35 @@
                 @error('permanent_address') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
 
+            {{-- Profile photo --}}
             <div class="mb-4">
                 <label class="block mb-1">Profile Photo</label>
                 <input type="file" name="profile_photo" id="profile_photo" class="w-full border px-3 py-2 rounded" onchange="previewProfilePhoto(event)">
 
-                {{-- Old Photo --}}
                 @if($employee->profile_photo)
-                    <img id="oldPhoto" src="{{ asset('employees/' . $employee->profile_photo) }}" class="w-24 h-24 mt-2 object-cover rounded-full">
+                    <div class="mt-2">
+                        <img id="oldPhoto" src="{{ route('employee.file', ['type' => 'photo', 'id' => $employee->id]) }}" class="w-24 h-24 object-cover rounded-full" alt="old photo">
+                    </div>
                 @endif
 
-                {{-- New Preview (hidden by default) --}}
-                <img id="preview" class="w-24 h-24 mt-2 object-cover rounded-full hidden">
+                <div class="mt-2">
+                    <img id="preview" class="w-24 h-24 object-cover rounded-full hidden" alt="new preview">
+                </div>
+
                 @error('profile_photo') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
 
+            {{-- Document --}}
             <div class="mb-4">
                 <label class="block mb-1">Employee Document</label>
                 <input type="file" name="document_file" class="w-full border px-3 py-2 rounded">
 
                 @if($employee->document_file)
                     <div class="mt-2">
-                        <a href="{{ asset('employees/' . $employee->document_file) }}" target="_blank" class="text-blue-600 hover:underline">Current document</a>
+                        <a href="{{ route('employee.file', ['type' => 'document', 'id' => $employee->id]) }}?download=1" target="_blank" class="text-blue-600 hover:underline">Download current document</a>
                     </div>
                 @endif
+
                 @error('document_file') <span class="text-red-600">{{ $message }}</span> @enderror
             </div>
 
@@ -103,6 +109,8 @@
 
 <script>
     function previewProfilePhoto(event) {
+        var file = event.target.files[0];
+        if (!file) return;
         var reader = new FileReader();
         reader.onload = function(){
             var preview = document.getElementById('preview');
@@ -115,7 +123,7 @@
                 oldPhoto.style.display = 'none';
             }
         };
-        reader.readAsDataURL(event.target.files[0]);
+        reader.readAsDataURL(file);
     }
 </script>
 @endsection
