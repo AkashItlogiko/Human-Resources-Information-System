@@ -44,5 +44,8 @@
         @yield('content')
     </main>
 
+    <!-- Scripts Section (for AJAX etc.) -->
+    @yield('scripts')
+
 </body>
 </html>

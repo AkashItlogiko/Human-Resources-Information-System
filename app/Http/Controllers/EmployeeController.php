@@ -6,6 +6,7 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+// inside App\Http\Controllers\EmployeeController
 
 class EmployeeController extends Controller
 {
@@ -23,40 +24,50 @@ class EmployeeController extends Controller
     }
 
     // store
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'first_name'        => 'required|string',
-            'last_name'         => 'required|string',
-            'designation'       => 'nullable|string',
-            'email'             => 'required|email|unique:employees,email',
-            'salary'            => 'required|numeric',
-            'phone'             => 'required|string',
-            'emergency_phone'   => 'nullable|string',
-            'nid_number'        => 'required|string',
-            'present_address'   => 'required|string',
-            'permanent_address' => 'nullable|string',
-            'profile_photo'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'document_file'     => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
-        ]);
 
-        // Save to private disk
-        if ($request->hasFile('profile_photo')) {
-            $fileName = time().'_'.uniqid().'.'.$request->profile_photo->extension();
-            $path = $request->file('profile_photo')->storeAs('employees/photos', $fileName, 'private'); // private disk
-            $data['profile_photo'] = $path; // e.g. employees/photos/...
-        }
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'first_name'        => 'required|string',
+        'last_name'         => 'required|string',
+        'designation'       => 'nullable|string',
+        'email'             => 'required|email|unique:employees,email',
+        'salary'            => 'required|numeric',
+        'phone'             => 'required|string',
+        'emergency_phone'   => 'nullable|string',
+        'nid_number'        => 'required|string',
+        'present_address'   => 'required|string',
+        'permanent_address' => 'nullable|string',
+        'profile_photo'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'document_file'     => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:5120',
+    ]);
 
-        if ($request->hasFile('document_file')) {
-            $docName = time().'_'.uniqid().'_doc.'.$request->document_file->extension();
-            $docPath = $request->file('document_file')->storeAs('employees/documents', $docName, 'private');
-            $data['document_file'] = $docPath;
-        }
-
-        Employee::create($data);
-
-        return redirect()->route('employee.index')->with('success', 'Employee created successfully');
+    // Save to private disk
+    if ($request->hasFile('profile_photo')) {
+        $fileName = time().'_'.uniqid().'.'.$request->profile_photo->extension();
+        $path = $request->file('profile_photo')->storeAs('employees/photos', $fileName, 'private'); // private disk
+        $data['profile_photo'] = $path; // e.g. employees/photos/...
     }
+
+    if ($request->hasFile('document_file')) {
+        $docName = time().'_'.uniqid().'_doc.'.$request->document_file->extension();
+        $docPath = $request->file('document_file')->storeAs('employees/documents', $docName, 'private');
+        $data['document_file'] = $docPath;
+    }
+
+    $employee = Employee::create($data);
+
+    // If AJAX / expects JSON, return JSON (validation errors are already JSON by Laravel)
+    if ($request->expectsJson()) {
+        return response()->json([
+            'message'  => 'Employee created successfully',
+            'employee' => $employee,
+        ], 201);
+    }
+
+    // Non-AJAX fallback
+    return redirect()->route('employees.index')->with('success', 'Employee created successfully');
+}
 
     // edit form
     public function edit($id)
