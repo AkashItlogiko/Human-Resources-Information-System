@@ -58,7 +58,7 @@
                             {{ $attendance->employee->first_name }} {{ $attendance->employee->last_name }}
                         </td>
                         <td class="p-3 align-middle">{{ $attendance->date }}</td>
-                        <td class="p-3 align-middle">{{ $attendance->status }}</td>
+                        <td class="p-3 align-middle">{{ ucfirst($attendance->status) }}</td>
                         <td class="p-3 align-middle text-center">
                             <div class="flex justify-center gap-2">
                                 <a href="{{ route('attendance.edit', $attendance->id) }}"
@@ -84,6 +84,11 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <!-- Pagination Links -->
+    <div class="mt-4">
+        {{ $attendances->appends(request()->query())->links() }}
     </div>
 
     <a href="{{ route('attendance') }}"

@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         \App\Models\Employee::factory()->count(10)->create();
+        $this->call(AttendanceSeeder::class);
     }
 }
