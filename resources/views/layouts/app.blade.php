@@ -17,7 +17,7 @@
             </h1>
 
             <nav class="space-y-4">
-                <a href="{{ route('employee.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
+                <a href="{{ route('employees.index') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
                     All Employee
                 </a>
                 <a href="{{ route('attendance') }}" class="block px-4 py-2 font-bold rounded-lg hover:bg-yellow-500 hover:text-white transition">
