@@ -8,7 +8,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
         <!-- All Employee Card -->
-        <a href="{{ route('employee.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center transition duration-300">
+        <a href="{{ route('employees.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white p-8 rounded-lg shadow-lg flex flex-col items-center justify-center transition duration-300">
             <span class="text-2xl font-semibold mb-2">All Employee</span>
             <span class="text-sm">View all employees</span>
         </a>
