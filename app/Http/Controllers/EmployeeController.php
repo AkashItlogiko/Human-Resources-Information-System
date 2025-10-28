@@ -119,7 +119,7 @@ public function store(Request $request)
 
         $employee->update($data);
 
-        return redirect()->route('employee.index')->with('success', 'Employee updated successfully');
+        return redirect()->route('employees.index')->with('success', 'Employee updated successfully');
     }
 
     // destroy
